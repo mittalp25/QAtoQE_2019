@@ -1,0 +1,20 @@
+flightfind.topBanner.img = xpath=//img[@src='/images/masts/mast_flightfinder.gif']
+flightfind.welcomepara.text = xpath=//*[contains(text(),'Use our Flight')]
+
+flightfifnd.oneWayTrip.radioButtons = xpath=//input[@value='oneway']
+flightfifnd.roundTrip.radioButtons = xpath=//input[@value='roundtrip']
+flightfind.selectPassenger.dropdown = xpath=//select[@name='passCount']//option
+flightfind.fromCity.dropdown = xpath=//select[@name='fromPort']//option
+flightfind.toCity.dropdown = xpath=//select[@name='toPort']//option
+flightfind.departMonth.dropdown = xpath=//select[@name='fromMonth']//option
+flightfind.departDay.dropdown = xpath=//select[@name='fromDay']//option
+flightfind.returnMonth.dropdown = xpath=//select[@name='toMonth']//option
+flightfind.returnDay.dropdown = xpath=//select[@name='toDay']//option
+
+flightfind.economy.radio = xpath=//input[@value='Coach']
+flightfind.business.radio = xpath=//input[@value='Business']
+flightfind.first.radio = xpath=//input[@value='First']
+
+flightfind.airline.dropdown = xpath=//select[@name='airline']//option
+
+flightfind.continue.button = xpath=//input[@src='/images/forms/continue.gif']

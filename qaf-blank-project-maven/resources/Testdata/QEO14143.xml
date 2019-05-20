@@ -1,0 +1,16 @@
+<root>
+   <InvalidLogin>
+       <data>
+           <username>guest123</username>
+           <pwd>guest</pwd>
+       </data>
+       <data>
+           <username>guest</username>
+           <pwd>guest123</pwd>
+       </data>
+       <data>
+           <username>guest1234</username>
+           <pwd>guest1235</pwd>
+       </data>
+   </InvalidLogin>
+</root>

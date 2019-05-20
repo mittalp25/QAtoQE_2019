@@ -1,0 +1,25 @@
+#Page.object. Data type - is the format
+login.username.text = xpath=//input[@name='userName']
+login.password.text = xpath=//input[@name='password']
+login.signin.button = xpath=//input[@value='Login']
+
+#Images locators
+home.featureddest.img = xpath=//img[@src='/images/featured_destination.gif']
+home.specials.img = xpath=//img[@src='/images/hdr_specials.gif']
+home.tourtips.img = xpath=//img[@src='/images/hdr_tips.gif']
+home.findaflight.img = xpath=//img[@src='/images/hdr_findflight.gif']
+home.destinations.img = xpath=//img[@src='/images/hdr_destinations.gif']
+home.vacations.img = xpath=//img[@src='/images/hdr_vacation.gif']
+home.register.img = xpath=//img[@src='/images/hdr_register.gif']
+home.links.img = xpath=//img[@src='/images/hdr_links.gif']
+
+#Left Menu links locators
+home.leftmenu.home.link= xpath=//a[text()='Home']
+home.leftmenu.hotels.link= xpath=//a[text()='Hotels']
+home.leftmenu.cruises.link= xpath=//a[text()='Cruises']
+
+#Top Menu links locators
+home.topemenu.signon.link= xpath=//a[text()='SIGN-ON']
+home.topemenu.register.link= xpath=//a[text()='REGISTER']
+home.topemenu.support.link= xpath=//a[text()='SUPPORT']
+home.topemenu.contact.link= xpath=//a[text()='CONTACT']

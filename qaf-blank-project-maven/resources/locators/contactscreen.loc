@@ -1,0 +1,3 @@
+contact.title.img = xpath=//img[@src='/images/masts/mast_construction.gif']
+contact.backToHome.buttonImg = xpath=//img[@src='/images/forms/home.gif']
+contact.textmsg.text = xpath=//b[*]
