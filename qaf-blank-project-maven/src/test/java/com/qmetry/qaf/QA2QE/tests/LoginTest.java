@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import com.qmetry.qaf.QA2QE.pages.BookAFlightPage;
 import com.qmetry.qaf.QA2QE.pages.ContactPage;
+import com.qmetry.qaf.QA2QE.pages.FlightConfirmationPage;
 import com.qmetry.qaf.QA2QE.pages.FlightFinderPage;
 import com.qmetry.qaf.QA2QE.pages.HomePage;
 import com.qmetry.qaf.QA2QE.pages.SelectFlightPage;
@@ -91,7 +92,15 @@ public class LoginTest extends WebDriverTestCase{
 		
 		Thread.sleep(4000);
 		
-		bookFlight.buttonSecurePurchase.click();		
+		bookFlight.buttonSecurePurchase.click();	
+		
+		FlightConfirmationPage flightConfirm = new FlightConfirmationPage();
+		assertTrue(flightConfirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Failed: Not on confirmation page:" , "Pass: On Flight confirmation page");
+		flightConfirm.buttonLogout.click();
+		
+		SignOnPage signOn = new SignOnPage();
+		assertTrue(signOn.getWindowTitle().equals("Sign-on: Mercury Tours"), "Failed: Not on sign on page:" , "Pass: On Sign on page");
+				
 	}	
 	
 	@QAFDataProvider(key="InvalidLogin.data") //Data file path is not required here.

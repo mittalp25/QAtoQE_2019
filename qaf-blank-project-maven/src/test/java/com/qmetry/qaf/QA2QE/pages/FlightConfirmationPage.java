@@ -6,7 +6,7 @@ import com.qmetry.qaf.automation.ui.api.PageLocator;
 import com.qmetry.qaf.automation.ui.api.WebDriverTestPage;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebElement;
 
-public class SignOnPage extends WebDriverBaseTestPage<WebDriverTestPage>{
+public class FlightConfirmationPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 
 	@Override
 	protected void openPage(PageLocator locator, Object... args) {
@@ -17,8 +17,6 @@ public class SignOnPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 		return driver.getTitle();
 	}
 	
-	@FindBy(locator="failed.login.text")
-	public QAFWebElement textWelcomeMsg;
-
-	
+	@FindBy(locator="flightConfirm.logout.button")
+	public QAFWebElement buttonLogout;
 }

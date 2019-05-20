@@ -1,0 +1,2 @@
+flightConfirm.logout.button = xpath=//img[@src='/images/forms/Logout.gif']
+
