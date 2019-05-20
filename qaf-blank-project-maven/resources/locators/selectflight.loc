@@ -1,0 +1,1 @@
+selectflight.continue.button = xpath=//input[@src='/images/forms/continue.gif']

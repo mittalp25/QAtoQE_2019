@@ -1,0 +1,5 @@
+bookflight.fname.input = xpath=//input[@name='passFirst0']
+bookflight.lname.input = xpath=//input[@name='passLast0']
+bookflight.creditcard.input = xpath=//input[@name='creditnumber']
+bookflight.securePurchase.button = xpath=//input[@src='/images/forms/purchase.gif']
+
