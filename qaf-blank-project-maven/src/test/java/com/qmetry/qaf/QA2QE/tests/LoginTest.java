@@ -4,9 +4,11 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import com.qmetry.qaf.QA2QE.pages.BookAFlightPage;
 import com.qmetry.qaf.QA2QE.pages.ContactPage;
 import com.qmetry.qaf.QA2QE.pages.FlightFinderPage;
 import com.qmetry.qaf.QA2QE.pages.HomePage;
+import com.qmetry.qaf.QA2QE.pages.SelectFlightPage;
 import com.qmetry.qaf.QA2QE.pages.SignOnPage;
 import com.qmetry.qaf.automation.testng.dataprovider.QAFDataProvider;
 import com.qmetry.qaf.automation.ui.WebDriverTestCase;
@@ -77,9 +79,19 @@ public class LoginTest extends WebDriverTestCase{
 		
 		flightFinder.buttonContinue.click();
 		
+		SelectFlightPage selectFlight = new SelectFlightPage();
+		selectFlight.waitForPageToLoad();
+		selectFlight.buttonContinue.click();		
 		
+		BookAFlightPage bookFlight = new BookAFlightPage();
+		bookFlight.waitForPageToLoad();
+		bookFlight.inputFName.sendKeys("Mittal Test");
+		bookFlight.inputLName.sendKeys("Patel");
+		bookFlight.inputCreditCardNo.sendKeys("4400987867670101");
 		
+		Thread.sleep(4000);
 		
+		bookFlight.buttonSecurePurchase.click();		
 	}	
 	
 	@QAFDataProvider(key="InvalidLogin.data") //Data file path is not required here.
