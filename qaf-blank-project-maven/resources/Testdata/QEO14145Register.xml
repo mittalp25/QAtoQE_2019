@@ -1,0 +1,20 @@
+<root>
+    <data>
+        <register>
+            <user>
+                <fname>Elena</fname>
+                <lname>Gilbert</lname>
+                <phone>1234567890</phone>	
+                <email>abc@gmail.com</email>		
+                <addresss1>flat-007, baker street-202,</addresss1>
+                <addresss2>west side</addresss2>	
+                <city>New York</city>
+                <state>New York</state>		
+                <postal>12345</postal>
+                <country>Us</country>
+                <username>Elena123</username>
+                <password>Elena1010</password>               
+            </user>
+        </register>
+    </data>
+</root>

@@ -9,13 +9,14 @@ import com.qmetry.qaf.QA2QE.pages.ContactPage;
 import com.qmetry.qaf.QA2QE.pages.FlightConfirmationPage;
 import com.qmetry.qaf.QA2QE.pages.FlightFinderPage;
 import com.qmetry.qaf.QA2QE.pages.HomePage;
+import com.qmetry.qaf.QA2QE.pages.RegistrationPage;
 import com.qmetry.qaf.QA2QE.pages.SelectFlightPage;
 import com.qmetry.qaf.QA2QE.pages.SignOnPage;
 import com.qmetry.qaf.automation.testng.dataprovider.QAFDataProvider;
 import com.qmetry.qaf.automation.ui.WebDriverTestCase;
 import com.qmetry.qaf.automation.util.Reporter;
 
-public class LoginTest extends WebDriverTestCase{
+public class TestRunnerQAF extends WebDriverTestCase{
 	
 	@Test (description="Verify home page links/components")
 	public void QEO14140(){
@@ -135,5 +136,14 @@ public class LoginTest extends WebDriverTestCase{
 		homePage1.waitForPageToLoad();
 		assertTrue(homePage1.getWindowTitle().equals("Welcome: Mercury Tours"), "Fail" , "Pass");	
 	}
+	
+	@Test (description = "Register using databean concept")
+	public void QEO14145() throws InterruptedException {
+		
+		RegistrationPage register = new RegistrationPage();
+		register.RegisterNewUser();
+		
+	}
+	
 }
 

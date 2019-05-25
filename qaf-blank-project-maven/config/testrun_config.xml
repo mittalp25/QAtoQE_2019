@@ -39,7 +39,7 @@ For any inquiry or need additional information, please contact support-qaf@infos
 		<classes>
 			<class name="com.qmetry.qaf.QA2QE.tests.LoginTest">
 			    <methods>
-			        <include name="QEO14142"></include>
+			        <include name="QEO14145"></include>
 			    </methods>
 			</class>
 		</classes>
