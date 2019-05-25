@@ -141,8 +141,7 @@ public class TestRunnerQAF extends WebDriverTestCase{
 	public void QEO14145() throws InterruptedException {
 		
 		RegistrationPage register = new RegistrationPage();
-		register.RegisterNewUser();
-		
+		register.RegisterNewUser();		
 	}
 	
 }

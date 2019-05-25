@@ -1,0 +1,18 @@
+rg.firstname.input = xpath=//input[@name='firstName']
+rg.lastname.input = xpath=//input[@name='lastName']
+rg.phone.input = xpath=//input[@name='phone']
+rg.email.input = xpath=//input[@name='userName']
+
+rg.email.input = xpath=//input[@name='userName']
+rg.addr1.input = xpath=//input[@name='address1']
+rg.addr2.input = xpath=//input[@name='address2']
+rg.city.input = xpath=//input[@name='city']
+rg.state.input = xpath=//input[@name='state']
+rg.zip.input = xpath=//input[@name='postalCode']
+rg.country.select = xpath=//select[@name='country']
+
+rg.username.input = xpath=//input[@name='email']
+rg.password.input = xpath=//input[@name='password']
+rg.confirmPwd.input = xpath=//input[@name='confirmPassword']
+
+rg.submit.button = xpath=//input[@src='/images/forms/submit.gif']

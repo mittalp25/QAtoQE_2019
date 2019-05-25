@@ -1,8 +1,8 @@
 package com.qmetry.qaf.QA2QE.databean;
 
-import com.qmetry.qaf.automation.data.BaseFormDataBean;
+import com.qmetry.qaf.automation.data.BaseDataBean;
 
-public class RegisterFormDataBean extends BaseFormDataBean{
+public class RegisterFormDataBean extends BaseDataBean{
 
 	public String fName;
 	public String lName;
@@ -16,5 +16,5 @@ public class RegisterFormDataBean extends BaseFormDataBean{
 	public String country;
 	public String username;
 	public String password;
-	
+	public String confirmpassword;
 }

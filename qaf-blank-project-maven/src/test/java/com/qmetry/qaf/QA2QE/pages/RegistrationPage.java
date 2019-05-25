@@ -1,5 +1,7 @@
 package com.qmetry.qaf.QA2QE.pages;
 
+import java.util.List;
+
 import com.qmetry.qaf.QA2QE.databean.RegisterFormDataBean;
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
@@ -55,9 +57,8 @@ public class RegistrationPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 	
 	@FindBy(locator="rg.submit.button")
 	public QAFWebElement buttonSubmit;	
-	
-	
-	public void RegisterNewUser() {
+			
+	public void RegisterNewUser() throws InterruptedException {
 		
 		HomePage homePage = new HomePage();
 		homePage.launchPage(null);
@@ -66,8 +67,24 @@ public class RegistrationPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 		
 		RegisterFormDataBean registerXmlForm = new RegisterFormDataBean();
 		registerXmlForm.fillFromConfig("data.register.user");					
-				
-	    //Fill in all the data using above locator fields		
+	//	registerXmlForm.fillUiElements("data.register.user");
+		
+		//Fill in all the XML data using above locator fields.
+		//RegiterFormDataBean fields (variable names) should match XML tag names and it fetches values from there
+		inputFirstName.sendKeys(registerXmlForm.fName);
+		inputLastName.sendKeys(registerXmlForm.lName);
+		inputEmail.sendKeys(registerXmlForm.email);
+		inputPhone.sendKeys(registerXmlForm.phone);
+		inputAddr1.sendKeys(registerXmlForm.addresss1);
+		inputAddr2.sendKeys(registerXmlForm.addresss2);
+		inputCity.sendKeys(registerXmlForm.city);
+		inputState.sendKeys(registerXmlForm.state);
+		inputZip.sendKeys(registerXmlForm.postal);
+		dropDownCountry.sendKeys(registerXmlForm.country);
+		inputUsername.sendKeys(registerXmlForm.username);
+		inputPassword.sendKeys(registerXmlForm.password);
+		inputConfirmPwd.sendKeys(registerXmlForm.confirmpassword);
 	}
 	
 }
+

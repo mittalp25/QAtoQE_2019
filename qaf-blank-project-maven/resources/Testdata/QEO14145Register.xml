@@ -11,9 +11,10 @@
                 <city>New York</city>
                 <state>New York</state>		
                 <postal>12345</postal>
-                <country>Us</country>
+                <country>CANADA </country>
                 <username>Elena123</username>
-                <password>Elena1010</password>               
+                <password>Elena1010</password>
+                <confirmpassword>Elena1010</confirmpassword>                
             </user>
         </register>
     </data>
