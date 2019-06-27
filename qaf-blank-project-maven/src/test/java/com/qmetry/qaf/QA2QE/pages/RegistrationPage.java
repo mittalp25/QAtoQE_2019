@@ -1,8 +1,12 @@
 package com.qmetry.qaf.QA2QE.pages;
 
 import java.util.List;
+import java.util.Map;
+
+import org.testng.annotations.Test;
 
 import com.qmetry.qaf.QA2QE.databean.RegisterFormDataBean;
+import com.qmetry.qaf.automation.testng.dataprovider.QAFDataProvider;
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
 import com.qmetry.qaf.automation.ui.api.PageLocator;
@@ -57,20 +61,22 @@ public class RegistrationPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 	
 	@FindBy(locator="rg.submit.button")
 	public QAFWebElement buttonSubmit;	
-			
-	public void RegisterNewUser() throws InterruptedException {
-		
+	
+	public void clickRegister() {
 		HomePage homePage = new HomePage();
 		homePage.launchPage(null);
 		homePage.waitForPageToLoad();
 		homePage.linkRegister.click();
+	}
+
+	public void registerNewUserXML() throws InterruptedException {
 		
 		RegisterFormDataBean registerXmlForm = new RegisterFormDataBean();
-		registerXmlForm.fillFromConfig("data.register.user");					
+		registerXmlForm.fillFromConfig("data.register.user");
 	//	registerXmlForm.fillUiElements("data.register.user");
-		
+
 		//Fill in all the XML data using above locator fields.
-		//RegiterFormDataBean fields (variable names) should match XML tag names and it fetches values from there
+		//RegisterFormDataBean fields (variable names) should match XML tag names and it fetches values from there
 		inputFirstName.sendKeys(registerXmlForm.fName);
 		inputLastName.sendKeys(registerXmlForm.lName);
 		inputEmail.sendKeys(registerXmlForm.email);
@@ -86,5 +92,19 @@ public class RegistrationPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 		inputConfirmPwd.sendKeys(registerXmlForm.confirmpassword);
 	}
 	
+	public void invalidDataTest(Map<String, Object> data1) throws InterruptedException {
+		//System.out.println("Inside page:" + data1.get("Phone"));
+
+		//Casting is required from Object to String for "sendKeys" function
+		String fname = (String) data1.get("Firstname");
+		inputFirstName.sendKeys(fname);
+
+		inputLastName.sendKeys((String) data1.get("Lastname"));
+		inputPhone.sendKeys(String.valueOf(data1.get("Phone")));
+		inputEmail.sendKeys((String) data1.get("Email"));
+			
+		
+	}
+		
 }
 

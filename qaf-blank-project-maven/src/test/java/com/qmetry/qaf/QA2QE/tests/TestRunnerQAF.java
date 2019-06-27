@@ -104,7 +104,7 @@ public class TestRunnerQAF extends WebDriverTestCase{
 				
 	}	
 	
-	@QAFDataProvider(key="InvalidLogin.data") //Data file path is not required here.
+	@QAFDataProvider(key="InvalidLogin.data") //Data file path is not required here. Give just xml tag keys after "root"
 	@Test(description = "Cannot login using Invalid credentials.")
 	public void QEO14143(Map<String, String> xmlData) throws InterruptedException {
 		HomePage homePage = new HomePage();
@@ -137,12 +137,22 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		assertTrue(homePage1.getWindowTitle().equals("Welcome: Mercury Tours"), "Fail" , "Pass");	
 	}
 	
-	@Test (description = "Register using databean concept")
-	public void QEO14145() throws InterruptedException {
+	@Test (description = "Register form: XML databean concept")
+	public void QEO14145() throws InterruptedException{
 		
 		RegistrationPage register = new RegistrationPage();
-		register.RegisterNewUser();		
+		register.clickRegister();
+		register.registerNewUserXML();		
 	}
 	
+	@QAFDataProvider (dataFile = "resources/Testdata/QEO14146.xls")
+	@Test (description = "Register form: Invalid data: Excel databean concept")
+	public void QEO14146(Map<String, Object> data) throws InterruptedException {
+		
+		RegistrationPage register = new RegistrationPage();
+		register.clickRegister();
+		register.invalidDataTest(data); //It passes 3 rows data and QAF automatically runs TC 3 times. Each time it fills one row of data
+		Thread.sleep(3000);	
+	}		
 }
 
