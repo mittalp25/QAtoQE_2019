@@ -2,7 +2,7 @@ package com.qmetry.qaf.QA2QE.databean;
 
 import com.qmetry.qaf.automation.data.BaseDataBean;
 
-public class RegisterFormDataBean extends BaseDataBean{
+public class RegisterDataBean extends BaseDataBean{
 
 	public String fName;
 	public String lName;

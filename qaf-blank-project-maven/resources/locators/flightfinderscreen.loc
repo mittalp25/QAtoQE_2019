@@ -3,7 +3,7 @@ flightfind.welcomepara.text = xpath=//*[contains(text(),'Use our Flight')]
 
 flightfifnd.oneWayTrip.radioButtons = xpath=//input[@value='oneway']
 flightfifnd.roundTrip.radioButtons = xpath=//input[@value='roundtrip']
-flightfind.selectPassenger.dropdown = xpath=//select[@name='passCount']//option
+flightfind.selectPassenger.dropdown = xpath=//select[@name='passCount']
 flightfind.fromCity.dropdown = xpath=//select[@name='fromPort']//option
 flightfind.toCity.dropdown = xpath=//select[@name='toPort']//option
 flightfind.departMonth.dropdown = xpath=//select[@name='fromMonth']//option

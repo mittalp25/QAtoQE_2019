@@ -1,5 +1,8 @@
 package com.qmetry.qaf.QA2QE.pages;
 
+import java.util.List;
+
+import com.qmetry.qaf.QA2QE.component.SelectFlightComponent;
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
 import com.qmetry.qaf.automation.ui.api.PageLocator;
@@ -15,4 +18,18 @@ public class SelectFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 
 	@FindBy(locator="selectflight.continue.button")
 	public QAFWebElement buttonContinue;
+	
+	@FindBy(locator="selectflight.radioButtons.list")
+	public List<SelectFlightComponent> radioButtons;
+			
+	@FindBy(locator="selectflight.flightName.list")
+	public List<SelectFlightComponent> flightName;
+			
+	/*** Functions ***/
+	
+	public void selectFlights(String radioFN) {
+		SelectFlightComponent fn = new SelectFlightComponent("selectflight.radioButtons.list");
+		fn.getXpath(radioFN).click();	
+	}
+	
 }

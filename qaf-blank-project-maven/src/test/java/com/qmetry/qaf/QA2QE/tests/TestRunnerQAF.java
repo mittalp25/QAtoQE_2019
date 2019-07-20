@@ -1,9 +1,11 @@
 package com.qmetry.qaf.QA2QE.tests;
 
+import java.util.Calendar;
 import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import com.qmetry.qaf.QA2QE.databean.FlightDetailFormDataBean;
 import com.qmetry.qaf.QA2QE.pages.BookAFlightPage;
 import com.qmetry.qaf.QA2QE.pages.ContactPage;
 import com.qmetry.qaf.QA2QE.pages.FlightConfirmationPage;
@@ -67,6 +69,7 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		flightFinder.waitForPageToLoad();
 		verifyTrue(flightFinder.getWindowTitle().equals("Find a Flight: Mercury Tours:"), "Fail: Could't sign in.", "Pass: Signed in successfully.");
 		
+		flightFinder.radioOneWayTrip.click();
 		flightFinder.selectPassengerCount("2 ");
 		flightFinder.selectFromCity("San Francisco");
 		flightFinder.selectDepartMonth("June");
@@ -145,7 +148,7 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		register.registerNewUserXML();		
 	}
 	
-	@QAFDataProvider (dataFile = "resources/Testdata/QEO14146.xls")
+	@QAFDataProvider (dataFile = "resources/Testdata/QEO14146.xls") //xlsx is not compatible with QMETRY v14
 	@Test (description = "Register form: Invalid data: Excel databean concept")
 	public void QEO14146(Map<String, Object> data) throws InterruptedException {
 		
@@ -153,6 +156,67 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		register.clickRegister();
 		register.invalidDataTest(data); //It passes 3 rows data and QAF automatically runs TC 3 times. Each time it fills one row of data
 		Thread.sleep(3000);	
+	}
+	
+	
+	@Test(description = "Form data bean")
+	public void QEO14147() throws InterruptedException  {
+		
+		HomePage homePage = new HomePage();
+		homePage.launchPage(null);
+		homePage.waitForPageToLoad();
+		homePage.doLogin("guest", "guest");
+		
+		FlightDetailFormDataBean fb = new FlightDetailFormDataBean();
+		//fb.setTripType("oneway");
+		fb.setTripType("roundtrip");
+		fb.setPassengerCount(1);
+		fb.setDepartureCity("Portland");
+		fb.setArrivalCity("New York");
+				
+		//Date currentDate = new Date(); Do NOT Use. Deprecated
+		Calendar date = Calendar.getInstance();
+	
+		fb.setDepartureMonth(date.get(Calendar.MONTH));
+		fb.setDepartureDate(date.get(Calendar.DAY_OF_MONTH));
+		fb.setReturnMonth(date.get(Calendar.MONTH));
+		fb.setReturnDate(date.get(Calendar.DAY_OF_MONTH) + 5);
+		
+		fb.fillUiElements();
+		Thread.sleep(3000);
+		
+		FlightFinderPage fb2 = new FlightFinderPage();
+		fb2.buttonContinue.click();
+						
+		SelectFlightPage sf = new SelectFlightPage();
+		sf.selectFlights("Unified Airlines$563$125$11:24");
+		sf.selectFlights("Blue Skies Airlines$651$99$14:30");
+		Thread.sleep(2000);
+		sf.buttonContinue.click();
+		
+		BookAFlightPage bookFL = new BookAFlightPage();
+			
+		verifyTrue(bookFL.textCity1.getText().equals("Portland to New York"), "Fail: City1", "Pass: City1");
+		verifyTrue(bookFL.textDate1.getText().equals("6/19/2019"), "Fail: Date1", "Pass: Date1");
+		verifyTrue(bookFL.textFlight1.getText().equals("Unified Airlines 563"), "Fail: Flight1", "Pass: Flight1");
+		
+		verifyTrue(bookFL.textCity2.getText().equals("New York to Portland"), "Fail: City2", "Pass: City2");
+		verifyTrue(bookFL.textDate2.getText().equals("6/24/2019"), "Fail: Date2", "Pass: Date2");
+		verifyTrue(bookFL.textFlight2.getText().equals("Blue Skies Airlines 651"), "Fail: Flight2", "Pass: Flight2");
+		
+		verifyTrue(bookFL.textPassenger.getText().equals("1"), "Fail: Passenger count", "Pass: Passenger count");
+		verifyTrue(bookFL.textPrice.getText().equals("$242"), "Fail: Total Price", "Pass: Total Price");
+		
+		bookFL.inputFName.sendKeys("Test FName");
+		bookFL.inputLName.sendKeys("Test LName");
+		bookFL.inputCreditCardNo.sendKeys("4666829312341359");
+		
+		bookFL.buttonSecurePurchase.click();
+		
+		FlightConfirmationPage confirm = new FlightConfirmationPage();
+		verifyTrue(confirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Fail: No confirm screen." , "Pass: On confirm screen.");
+	
 	}		
 }
+
 

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
-import com.qmetry.qaf.QA2QE.databean.RegisterFormDataBean;
+import com.qmetry.qaf.QA2QE.databean.RegisterDataBean;
 import com.qmetry.qaf.automation.testng.dataprovider.QAFDataProvider;
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
@@ -71,7 +71,7 @@ public class RegistrationPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 
 	public void registerNewUserXML() throws InterruptedException {
 		
-		RegisterFormDataBean registerXmlForm = new RegisterFormDataBean();
+		RegisterDataBean registerXmlForm = new RegisterDataBean();
 		registerXmlForm.fillFromConfig("data.register.user");
 	//	registerXmlForm.fillUiElements("data.register.user");
 

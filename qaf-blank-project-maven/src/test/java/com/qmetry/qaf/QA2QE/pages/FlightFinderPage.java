@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import com.qmetry.qaf.QA2QE.databean.FlightDetailFormDataBean;
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
+import com.qmetry.qaf.automation.ui.annotations.UiElement;
 import com.qmetry.qaf.automation.ui.api.PageLocator;
 import com.qmetry.qaf.automation.ui.api.WebDriverTestPage;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebElement;
@@ -62,8 +64,7 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 	
 	@FindBy(locator="flightfind.continue.button")
 	public QAFWebElement buttonContinue;	
-	
-	
+		
 	/** Functions */
 	public QAFWebElement getTextTopWelcomePara() {
 		System.out.println("Inside fn:" + textTopWelcomePara.getText());
@@ -138,4 +139,6 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 			}
 		}
 	}	
+	
+	
 }

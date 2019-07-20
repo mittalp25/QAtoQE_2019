@@ -24,5 +24,29 @@ public class BookAFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 
 	@FindBy(locator="bookflight.securePurchase.button")
 	public QAFWebElement buttonSecurePurchase;
-	 
+	
+	/** All verification locators **/
+	@FindBy(locator="bookflight.summary.city1")
+	public QAFWebElement textCity1;
+	
+	@FindBy(locator="bookflight.summary.date1")
+	public QAFWebElement textDate1;
+	
+	@FindBy(locator="bookflight.summary.flight1")
+	public QAFWebElement textFlight1;
+	
+	@FindBy(locator="bookflight.summary.city2")
+	public QAFWebElement textCity2;
+	
+	@FindBy(locator="bookflight.summary.date2")
+	public QAFWebElement textDate2;
+	
+	@FindBy(locator="bookflight.summary.flight2")
+	public QAFWebElement textFlight2;
+		
+	@FindBy(locator="bookflight.summary.passenger")
+	public QAFWebElement textPassenger;
+	
+	@FindBy(locator="bookflight.summary.price")
+	public QAFWebElement textPrice;
 }

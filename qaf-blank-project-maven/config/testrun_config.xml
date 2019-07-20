@@ -23,7 +23,6 @@ For any inquiry or need additional information, please contact support-qaf@infos
 
 -->
  
-
 <suite name="QAF Demo" verbose="0">
 	<test name="BDD Test" enabled="false">
 		<classes>
@@ -37,9 +36,9 @@ For any inquiry or need additional information, please contact support-qaf@infos
 	</test>
 	<test name="QA to QE: NewTour Website Tests" enabled="true">
 		<classes>
-			<class name="com.qmetry.qaf.QA2QE.tests.LoginTest">
+			<class name="com.qmetry.qaf.QA2QE.tests.TestRunnerQAF">
 			    <methods>
-			        <include name="QEO14145"></include>
+			        <include name="QEO14147"></include>
 			    </methods>
 			</class>
 		</classes>
