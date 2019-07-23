@@ -251,12 +251,13 @@ public class TestRunnerQAF extends WebDriverTestCase{
 						
 		SelectFlightPage sf = new SelectFlightPage();
 		System.out.println(sf.departFlightname.getText());
-		verifyTrue(sf.departFlightname.getText().equals("London to London 7/23/2019"), "Fail: City1", "Pass: City1");		
-					
+		verifyTrue(sf.departFlightname.getText().equals("London to London 7/23/2019"), "Fail: City1", "Pass: City1");
 		
-		
+		sf.buttonContinue.click();
+		BookAFlightPage bookFL = new BookAFlightPage();
+		System.out.println("Window is: " + bookFL.getWindowName());
+		verifyTrue(bookFL.getWindowName().equals("Book a Flight: Mercury Tours"), "Fail: No title.", "Pass: Title appears.");
 	}		
-	
 }
 
 

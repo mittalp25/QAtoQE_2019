@@ -13,6 +13,10 @@ public class BookAFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 		driver.get("/");		
 	}
 	
+	public String getWindowName(){		
+		return driver.getTitle();
+	}
+	
 	@FindBy(locator="bookflight.fname.input")
 	public QAFWebElement inputFName;
 	
