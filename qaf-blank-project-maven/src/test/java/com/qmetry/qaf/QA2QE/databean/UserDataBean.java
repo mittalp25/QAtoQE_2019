@@ -6,7 +6,7 @@ import com.qmetry.qaf.automation.data.BaseDataBean;
 import com.qmetry.qaf.automation.util.RandomStringGenerator.RandomizerTypes;
 import com.qmetry.qaf.automation.util.Randomizer;
 
-public class UserFormDataBean extends BaseDataBean{
+public class UserDataBean extends BaseDataBean{
 
 	@Randomizer()
 	private String fName;
@@ -67,10 +67,11 @@ public class UserFormDataBean extends BaseDataBean{
 	
 	public static void main(String[] args) {
 		String json = "{'age':25,'fName':'ABC','doJ':1}";
-		UserFormDataBean bean = new UserFormDataBean();
 		
-		//bean.fillRandomData();
-		bean.fillData("data.register.user");
+		UserDataBean bean = new UserDataBean();		
+		//bean.fillRandomData();		
+		//bean.fillData("data.register.user"); - From XML data file
+		bean.fillData(json);
 
 		System.out.println(bean);
 	}

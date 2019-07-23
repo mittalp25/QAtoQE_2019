@@ -24,7 +24,10 @@ public class SelectFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 			
 	@FindBy(locator="selectflight.flightName.list")
 	public List<SelectFlightComponent> flightName;
-			
+	
+	@FindBy(locator="selectflight.depart.name")
+	public QAFWebElement departFlightname;
+		
 	/*** Functions ***/
 	
 	public void selectFlights(String radioFN) {

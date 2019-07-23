@@ -1,7 +1,5 @@
 package com.qmetry.qaf.QA2QE.component;
 
-import java.util.List;
-
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
 import com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebElement;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebComponent;

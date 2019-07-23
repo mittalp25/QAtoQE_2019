@@ -1,1 +1,9 @@
 selectflight.continue.button = xpath=//input[@src='/images/forms/continue.gif']
+selectflight.radioButtons.list = xpath=//input[@type='radio']
+selectflight.flightName.list = xpath=//td[@class='data_left']
+selectflight.departTime.list = xpath=//td[@class='data_center_mono']
+selectflight.stops.list = xpath=//td[@class='data_center']
+
+selectflight.depart.name= xpath=//td[@class='title']/../following-sibling::tr
+
+//input[contains(@value,'Unified Airlines$563')]

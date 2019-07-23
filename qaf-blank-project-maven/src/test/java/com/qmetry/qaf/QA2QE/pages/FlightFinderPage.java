@@ -1,13 +1,8 @@
 package com.qmetry.qaf.QA2QE.pages;
 
 import java.util.List;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
-import com.qmetry.qaf.QA2QE.databean.FlightDetailFormDataBean;
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
-import com.qmetry.qaf.automation.ui.annotations.UiElement;
 import com.qmetry.qaf.automation.ui.api.PageLocator;
 import com.qmetry.qaf.automation.ui.api.WebDriverTestPage;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebElement;

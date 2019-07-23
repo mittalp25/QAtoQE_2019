@@ -1,5 +1,6 @@
 package com.qmetry.qaf.QA2QE.tests;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Map;
 
@@ -215,8 +216,47 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		
 		FlightConfirmationPage confirm = new FlightConfirmationPage();
 		verifyTrue(confirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Fail: No confirm screen." , "Pass: On confirm screen.");
-	
 	}		
+	
+	
+	@Test(description = "Continue to next page with same details")
+	public void QEO14148() throws InterruptedException  {
+		
+		HomePage homePage = new HomePage();
+		homePage.launchPage(null);
+		homePage.waitForPageToLoad();
+		homePage.doLogin("guest", "guest");
+		
+		FlightDetailFormDataBean fb = new FlightDetailFormDataBean();
+		//fb.setTripType("oneway");
+		fb.setTripType("roundtrip");
+		fb.setPassengerCount(1);
+		fb.setDepartureCity("London");
+		fb.setArrivalCity("London");
+				
+		//Date currentDate = new Date(); Do NOT Use. Deprecated		
+			
+		System.out.println("Date is: " + LocalDate.now().getMonthValue());
+		
+		fb.setDepartureMonth(LocalDate.now().getMonthValue());
+		fb.setDepartureDate(LocalDate.now().getDayOfMonth() + 1);
+		fb.setReturnMonth(LocalDate.now().getMonthValue());
+		fb.setReturnDate(LocalDate.now().getDayOfMonth() + 1 + 5);
+		
+		fb.fillUiElements();
+		Thread.sleep(3000);
+		
+		FlightFinderPage fb2 = new FlightFinderPage();
+		fb2.buttonContinue.click();
+						
+		SelectFlightPage sf = new SelectFlightPage();
+		System.out.println(sf.departFlightname.getText());
+		verifyTrue(sf.departFlightname.getText().equals("London to London 7/23/2019"), "Fail: City1", "Pass: City1");		
+					
+		
+		
+	}		
+	
 }
 
 
