@@ -98,12 +98,9 @@ public class RegistrationPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 		//Casting is required from Object to String for "sendKeys" function
 		String fname = (String) data1.get("Firstname");
 		inputFirstName.sendKeys(fname);
-
 		inputLastName.sendKeys((String) data1.get("Lastname"));
 		inputPhone.sendKeys(String.valueOf(data1.get("Phone")));
-		inputEmail.sendKeys((String) data1.get("Email"));
-			
-		
+		inputEmail.sendKeys((String) data1.get("Email"));		
 	}
 		
 }

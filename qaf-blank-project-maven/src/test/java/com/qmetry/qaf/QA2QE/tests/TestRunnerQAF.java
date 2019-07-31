@@ -77,7 +77,7 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		flightFinder.selectDepartDay("21");
 		flightFinder.selectToCity("Zurich");
 		flightFinder.selectReturnMonth("July");
-		flightFinder.selectReturnDate("1");
+		flightFinder.selectReturnDay("1");
 		flightFinder.radioBusiness.click();
 		flightFinder.selectAirlines("Blue Skies Airlines");
 		
@@ -257,7 +257,24 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		BookAFlightPage bookFL = new BookAFlightPage();
 		System.out.println("Window is: " + bookFL.getWindowName());
 		verifyTrue(bookFL.getWindowName().equals("Book a Flight: Mercury Tours"), "Fail: No title.", "Pass: Title appears.");
-	}		
+	}
+	
+	@QAFDataProvider (dataFile = "resources/Testdata/QEO14149.xls") //xlsx is not compatible with QMETRY v14
+	@Test (description = "Depart Arrival on different data points.")
+	public void QEO14149(Map<String, Object> data) throws InterruptedException {
+		
+		HomePage homePage = new HomePage();
+		homePage.launchPage(null);
+		homePage.waitForPageToLoad();
+		homePage.doLogin("guest", "guest");
+		
+		FlightFinderPage fb = new FlightFinderPage();
+		//fb.setTripType("oneway");
+		fb.setdepartReturnDate(data);
+		fb.buttonContinue.click();
+		
+		Thread.sleep(3000);
+	}
 }
 
 

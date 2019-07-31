@@ -1,6 +1,8 @@
 package com.qmetry.qaf.QA2QE.pages;
 
 import java.util.List;
+import java.util.Map;
+
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
 import com.qmetry.qaf.automation.ui.api.PageLocator;
@@ -14,6 +16,14 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 		driver.get("/");	
 		
 	}
+	
+	public void setdepartReturnDate(Map<String, Object> data1){
+		String departDay = String.valueOf(data1.get("DepartOn"));
+		String returnDay = String.valueOf(data1.get("Return On"));
+		selectDepartDay(departDay);	
+		selectReturnDay(returnDay);
+	}
+		
 	
 	@FindBy(locator="flightfind.welcomepara.text")
 	private QAFWebElement textTopWelcomePara;
@@ -106,7 +116,7 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 	public void selectDepartDay(String departDate) {
 		for(QAFWebElement option: listDepartDay ) {
 			if (option.getText().equals(departDate)) {
-				option.click();
+				option.click();				
 			}
 		}
 	}
@@ -119,7 +129,7 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 		}
 	}
 	
-	public void selectReturnDate(String returnDay) {
+	public void selectReturnDay(String returnDay) {
 		for(QAFWebElement option: listReturnDay ) {
 			if (option.getText().equals(returnDay)) {
 				option.click();
@@ -133,7 +143,10 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 				option.click();
 			}
 		}
-	}	
+	}
+	
+	
+	
 	
 	
 }
