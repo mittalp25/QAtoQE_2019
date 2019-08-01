@@ -1,5 +1,7 @@
 package com.qmetry.qaf.QA2QE.pages;
 
+import java.util.Map;
+
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
 import com.qmetry.qaf.automation.ui.annotations.FindBy;
 import com.qmetry.qaf.automation.ui.api.PageLocator;
@@ -16,6 +18,17 @@ public class BookAFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 	public String getWindowName(){		
 		return driver.getTitle();
 	}
+	
+	public void setPurchase(Map<String, Object> data1){
+		String fName = String.valueOf(data1.get("FirstName"));
+		String lName = String.valueOf(data1.get("LastName"));
+		String cc = String.valueOf(data1.get("Account Num"));
+		inputFName.sendKeys(fName);
+		inputLName.sendKeys(lName);
+		inputCreditCardNo.sendKeys(cc);
+	}
+	
+	
 	
 	@FindBy(locator="bookflight.fname.input")
 	public QAFWebElement inputFName;

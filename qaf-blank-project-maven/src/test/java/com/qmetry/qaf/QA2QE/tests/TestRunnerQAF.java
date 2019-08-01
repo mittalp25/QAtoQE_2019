@@ -271,10 +271,53 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		FlightFinderPage fb = new FlightFinderPage();
 		//fb.setTripType("oneway");
 		fb.setdepartReturnDate(data);
-		fb.buttonContinue.click();
-		
+		fb.buttonContinue.click();		
 		Thread.sleep(3000);
 	}
+	
+	
+	@QAFDataProvider (dataFile = "resources/Testdata/QEO14150.xls") //xlsx is not compatible with QMETRY v14
+	@Test (description = "Depart Arrival on different data points.")
+	public void QEO14150(Map<String, Object> data) throws InterruptedException {
+		
+		HomePage homePage = new HomePage();
+		homePage.launchPage(null);
+		homePage.waitForPageToLoad();
+		homePage.doLogin("guest", "guest");
+		
+		FlightDetailFormDataBean fb = new FlightDetailFormDataBean();
+		//fb.setTripType("oneway");
+		fb.setTripType("roundtrip");
+		fb.setPassengerCount(1);
+		fb.setDepartureCity("Portland");
+		fb.setArrivalCity("New York");
+				
+		fb.setDepartureMonth(8);
+		fb.setDepartureDate(1);
+		fb.setReturnMonth(8);
+		fb.setReturnDate(10);
+		
+		fb.fillUiElements();
+		//Thread.sleep(3000);
+		
+		FlightFinderPage fb2 = new FlightFinderPage();
+		fb2.buttonContinue.click();
+						
+		SelectFlightPage sf = new SelectFlightPage();
+		sf.selectFlights("Unified Airlines$563$125$11:24");
+		sf.selectFlights("Blue Skies Airlines$651$99$14:30");
+		//Thread.sleep(2000);
+		sf.buttonContinue.click();
+		
+		BookAFlightPage bookFL = new BookAFlightPage();
+		bookFL.setPurchase(data);
+		bookFL.buttonSecurePurchase.click();
+		//Thread.sleep(2000);
+		
+		FlightConfirmationPage confirm = new FlightConfirmationPage();
+		assertTrue(confirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Failed: Not on confirmation page:" , "Pass: On Flight confirmation page");
+		
+	}		
 }
 
 

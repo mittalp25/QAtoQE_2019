@@ -24,7 +24,7 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 		selectReturnDay(returnDay);
 	}
 		
-	
+
 	@FindBy(locator="flightfind.welcomepara.text")
 	private QAFWebElement textTopWelcomePara;
 	
