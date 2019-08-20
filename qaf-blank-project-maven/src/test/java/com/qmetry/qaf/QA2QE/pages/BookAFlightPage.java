@@ -22,13 +22,11 @@ public class BookAFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 	public void setPurchase(Map<String, Object> data1){
 		String fName = String.valueOf(data1.get("FirstName"));
 		String lName = String.valueOf(data1.get("LastName"));
-		String cc = String.valueOf(data1.get("Account Num"));
+		String cc = String.valueOf(data1.get("Card Number"));
 		inputFName.sendKeys(fName);
 		inputLName.sendKeys(lName);
 		inputCreditCardNo.sendKeys(cc);
-	}
-	
-	
+	}	
 	
 	@FindBy(locator="bookflight.fname.input")
 	public QAFWebElement inputFName;
