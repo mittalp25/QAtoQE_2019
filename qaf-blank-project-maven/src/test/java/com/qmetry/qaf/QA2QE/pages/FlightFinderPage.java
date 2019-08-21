@@ -17,7 +17,7 @@ public class FlightFinderPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 		
 	}
 	
-	public void setdepartReturnDate(Map<String, Object> data1){
+	public void setDepartReturnDate(Map<String, Object> data1){
 		String departDay = String.valueOf(data1.get("DepartOn"));
 		String returnDay = String.valueOf(data1.get("Return On"));
 		selectDepartDay(departDay);	

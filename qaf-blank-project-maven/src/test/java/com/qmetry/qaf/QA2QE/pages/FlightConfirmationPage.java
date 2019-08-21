@@ -17,6 +17,17 @@ public class FlightConfirmationPage extends WebDriverBaseTestPage<WebDriverTestP
 		return driver.getTitle();
 	}
 	
+	
+	public void navigateBack() throws InterruptedException {
+		
+		driver.navigate().back();
+		Thread.sleep(4000);
+		
+	}
 	@FindBy(locator="flightConfirm.logout.button")
 	public QAFWebElement buttonLogout;
+	
+	@FindBy(locator="flightConfirm.backToFlight.button")
+	public QAFWebElement buttonBackToFlight;
+	
 }

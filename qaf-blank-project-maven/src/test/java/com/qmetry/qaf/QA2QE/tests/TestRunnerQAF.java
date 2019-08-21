@@ -1,5 +1,6 @@
 package com.qmetry.qaf.QA2QE.tests;
 
+import java.sql.Driver;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Map;
@@ -314,7 +315,7 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		
 		FlightConfirmationPage confirm = new FlightConfirmationPage();
 		assertTrue(confirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Failed: Not on confirmation page:" , "Pass: On Flight confirmation page");
-		
+		//confirm.navigateBack();
 	}	
 	
 	@QAFDataProvider (dataFile = "resources/Testdata/QEO14151.xls") //xlsx is not compatible with QMETRY v14
@@ -394,6 +395,93 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		bookFL.selectExpiryMonth(String.valueOf(data.get("Month")));
 		bookFL.selectExpiryYr(String.valueOf(data.get("Year")));
 	}	
+	
+	@Test(description = "Verify change country Pop up and selection is retained on Book flight page")
+	public void QEO14153() throws InterruptedException {
+
+		HomePage homePage = new HomePage();
+		homePage.launchPage(null);
+		homePage.waitForPageToLoad();
+		homePage.doLogin("guest", "guest");
+		
+		FlightDetailFormDataBean fb = new FlightDetailFormDataBean();
+		fb.setTripType("roundtrip");
+		fb.setPassengerCount(1);
+		fb.setDepartureCity("Portland");
+		fb.setArrivalCity("New York");
+				
+		fb.setDepartureMonth(8);
+		fb.setDepartureDate(1);
+		fb.setReturnMonth(8);
+		fb.setReturnDate(10);
+		
+		fb.fillUiElements();
+			
+		FlightFinderPage fb2 = new FlightFinderPage();
+		fb2.buttonContinue.click();
+						
+		SelectFlightPage sf = new SelectFlightPage();
+		sf.selectFlights("Unified Airlines$563$125$11:24");
+		sf.selectFlights("Blue Skies Airlines$651$99$14:30");
+		sf.buttonContinue.click();
+		
+		BookAFlightPage bookFL = new BookAFlightPage();
+		String text = bookFL.setCountry("CAMEROON"); //Index = 253
+		Thread.sleep(3000);
+		//String text = bookFL.getPopUpText();
+		System.out.println(text);
+		verifyTrue(text.equals("You have chosen a mailing location outside of the United States and its territories. An additional charge of $6.5 will be added as mailing charge."), "Fail: No text matched.", "Pass: Text matched.");
+		
+	}
+	
+	@Test(description = "Navigate Back from confirmation page")
+	public void QEO14154() throws InterruptedException {
+		
+		HomePage homePage = new HomePage();
+		homePage.launchPage(null);
+		homePage.waitForPageToLoad();
+		homePage.doLogin("guest", "guest");
+		
+		FlightDetailFormDataBean fb = new FlightDetailFormDataBean();
+		//fb.setTripType("oneway");
+		fb.setTripType("roundtrip");
+		fb.setPassengerCount(1);
+		fb.setDepartureCity("Portland");
+		fb.setArrivalCity("New York");
+				
+		fb.setDepartureMonth(8);
+		fb.setDepartureDate(1);
+		fb.setReturnMonth(8);
+		fb.setReturnDate(10);
+		
+		fb.fillUiElements();
+		//Thread.sleep(3000);
+		
+		FlightFinderPage fb2 = new FlightFinderPage();
+		fb2.buttonContinue.click();
+						
+		SelectFlightPage sf = new SelectFlightPage();
+		sf.selectFlights("Unified Airlines$563$125$11:24");
+		sf.selectFlights("Blue Skies Airlines$651$99$14:30");
+		//Thread.sleep(2000);
+		sf.buttonContinue.click();
+		
+		BookAFlightPage bookFL = new BookAFlightPage();
+		bookFL.inputFName.sendKeys("Firstname");
+		bookFL.inputLName.sendKeys("Lastname");
+		bookFL.inputCreditCardNo.sendKeys("1234567890123456");
+		bookFL.buttonSecurePurchase.click();
+				
+		FlightConfirmationPage confirm = new FlightConfirmationPage();
+		assertTrue(confirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Failed: Not on confirmation page:" , "Pass: On Flight confirmation page");
+		confirm.buttonBackToFlight.click();
+		
+		FlightFinderPage flightFind = new FlightFinderPage();
+		flightFind.waitForPageToLoad();
+		verifyTrue(flightFind.getWindowTitle().equals("Find a Flight: Mercury Tours:"), "Fail: No text matched.", "Pass: Text matched.");
+		
+	}	
+	
 }
 
 

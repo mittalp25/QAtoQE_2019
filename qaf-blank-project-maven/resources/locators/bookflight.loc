@@ -3,6 +3,7 @@ bookflight.lname.input= xpath=//input[@name='passLast0']
 bookflight.creditcard.input= xpath=//input[@name='creditnumber']
 bookflight.ccExpireMonth.select = xpath=//select[@name='cc_exp_dt_mn']/option
 bookflight.ccExpireYear.select = xpath=//select[@name='cc_exp_dt_yr']/option
+bookflight.countryList.select = xpath=//select[@name='delCountry']/option
 
 bookflight.securePurchase.button= xpath=//input[@src='/images/forms/purchase.gif']
 bookflight.summary.city1= xpath=//td[@class='frame_header_info'][1]/b
