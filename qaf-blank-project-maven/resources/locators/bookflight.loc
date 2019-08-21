@@ -1,6 +1,9 @@
 bookflight.fname.input= xpath=//input[@name='passFirst0']
 bookflight.lname.input= xpath=//input[@name='passLast0']
 bookflight.creditcard.input= xpath=//input[@name='creditnumber']
+bookflight.ccExpireMonth.select = xpath=//select[@name='cc_exp_dt_mn']/option
+bookflight.ccExpireYear.select = xpath=//select[@name='cc_exp_dt_yr']/option
+
 bookflight.securePurchase.button= xpath=//input[@src='/images/forms/purchase.gif']
 bookflight.summary.city1= xpath=//td[@class='frame_header_info'][1]/b
 bookflight.summary.date1= xpath=//td[@class='frame_header_info'][2]/b
@@ -10,3 +13,4 @@ bookflight.summary.date2= xpath=//td[@class='data_center_mono'][1]/b
 bookflight.summary.flight2= xpath=//*[contains(text(),'Blue Skies Airlines 651')]
 bookflight.summary.passenger=xpath=//*[contains(text(),'Passengers:')]/../following-sibling::td
 bookflight.summary.price= xpath=//*[contains(text(),'Total Price (including taxes):')]/../following-sibling::td
+

@@ -1,5 +1,6 @@
 package com.qmetry.qaf.QA2QE.pages;
 
+import java.util.List;
 import java.util.Map;
 
 import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
@@ -28,6 +29,24 @@ public class BookAFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 		inputCreditCardNo.sendKeys(cc);
 	}	
 	
+	public void selectExpiryMonth(String month) {
+		for (QAFWebElement option: dropDownExpireMonth) {
+		String chars1 = option.getText().replaceAll("[\\n\\t ]", "");
+		if(chars1.equals(month)) {
+				option.click();
+			}
+		}		
+	}
+	
+	public void selectExpiryYr(String Yr) {
+		for (QAFWebElement option: dropDownExpireYr) {
+			String chars1 = option.getText().replaceAll("[\\n\\t ]", "");
+			if(chars1.equals(Yr)) {
+				option.click();
+			}
+		}	
+	}
+		
 	@FindBy(locator="bookflight.fname.input")
 	public QAFWebElement inputFName;
 	
@@ -37,6 +56,12 @@ public class BookAFlightPage extends WebDriverBaseTestPage<WebDriverTestPage>{
 	@FindBy(locator="bookflight.creditcard.input")
 	public QAFWebElement inputCreditCardNo;
 
+	@FindBy(locator="bookflight.ccExpireMonth.select")
+	public List<QAFWebElement> dropDownExpireMonth;
+	
+	@FindBy(locator="bookflight.ccExpireYear.select")
+	public List<QAFWebElement> dropDownExpireYr;
+	
 	@FindBy(locator="bookflight.securePurchase.button")
 	public QAFWebElement buttonSecurePurchase;
 	

@@ -269,10 +269,8 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		homePage.doLogin("guest", "guest");
 		
 		FlightFinderPage fb = new FlightFinderPage();
-		//fb.setTripType("oneway");
-		fb.setdepartReturnDate(data);
+		fb.setDepartReturnDate(data);
 		fb.buttonContinue.click();		
-		Thread.sleep(3000);
 	}
 	
 	
@@ -321,7 +319,7 @@ public class TestRunnerQAF extends WebDriverTestCase{
 	
 	@QAFDataProvider (dataFile = "resources/Testdata/QEO14151.xls") //xlsx is not compatible with QMETRY v14
 	@Test (description = "Validation for Credit card number on Book flight page.")
-	public void QEO14151(Map<String, Object> data) throws InterruptedException {
+	public void QEO14151(Map<String, Object> data) throws InterruptedException{
 		
 		HomePage homePage = new HomePage();
 		homePage.launchPage(null);
@@ -329,7 +327,6 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		homePage.doLogin("guest", "guest");
 		
 		FlightDetailFormDataBean fb = new FlightDetailFormDataBean();
-		//fb.setTripType("oneway");
 		fb.setTripType("roundtrip");
 		fb.setPassengerCount(1);
 		fb.setDepartureCity("Portland");
@@ -349,22 +346,54 @@ public class TestRunnerQAF extends WebDriverTestCase{
 		SelectFlightPage sf = new SelectFlightPage();
 		sf.selectFlights("Unified Airlines$563$125$11:24");
 		sf.selectFlights("Blue Skies Airlines$651$99$14:30");
-		//Thread.sleep(2000);
 		sf.buttonContinue.click();
 		
 		BookAFlightPage bookFL = new BookAFlightPage();
 		bookFL.setPurchase(data);
 		int cardNumLength = bookFL.inputCreditCardNo.getAttribute("value").length();
-		
 		assertTrue(cardNumLength <=16, "Failed: It entered more than 16 chars for Card Number.", "Passed: Card Number is within 16 chars limit.");
-		Thread.sleep(2000);
 		bookFL.buttonSecurePurchase.click();
 		
 		FlightConfirmationPage confirm = new FlightConfirmationPage();
-		assertTrue(confirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Failed: Not on confirmation page:" , "Pass: On Flight confirmation page");		
+		confirm.waitForPageToLoad();
+		assertTrue(confirm.getWindowTitle().equals("Flight Confirmation: Mercury Tours"), "Failed: Not on confirmation page:" , "Pass: On Flight confirmation page");
+	
 	}	
-	
-	
+			
+	@QAFDataProvider (dataFile = "resources/Testdata/QEO14152.xls")
+	@Test (description = "Validation for expiration date field on Book flight page.")
+	public void QEO14152(Map<String, Object> data) throws InterruptedException{
+		
+		HomePage homePage = new HomePage();
+		homePage.launchPage(null);
+		homePage.waitForPageToLoad();
+		homePage.doLogin("guest", "guest");
+		
+		FlightDetailFormDataBean fb = new FlightDetailFormDataBean();
+		fb.setTripType("roundtrip");
+		fb.setPassengerCount(1);
+		fb.setDepartureCity("Portland");
+		fb.setArrivalCity("New York");
+				
+		fb.setDepartureMonth(8);
+		fb.setDepartureDate(1);
+		fb.setReturnMonth(8);
+		fb.setReturnDate(10);
+		
+		fb.fillUiElements();
+			
+		FlightFinderPage fb2 = new FlightFinderPage();
+		fb2.buttonContinue.click();
+						
+		SelectFlightPage sf = new SelectFlightPage();
+		sf.selectFlights("Unified Airlines$563$125$11:24");
+		sf.selectFlights("Blue Skies Airlines$651$99$14:30");
+		sf.buttonContinue.click();
+		
+		BookAFlightPage bookFL = new BookAFlightPage();
+		bookFL.selectExpiryMonth(String.valueOf(data.get("Month")));
+		bookFL.selectExpiryYr(String.valueOf(data.get("Year")));
+	}	
 }
 
 
